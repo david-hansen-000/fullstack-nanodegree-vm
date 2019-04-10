@@ -1,0 +1,5 @@
+virtualenv python=python3.7 .  // "." at end tells it where to create the virtual environment
+source {dir}/bin/activate // starts or activates the virtual environment doesn't have to be just python executables in the bin directory, it adds the bin directory to the PATH
+
+python -m idlelib // starts idle using the library setup for virtual environment
+
