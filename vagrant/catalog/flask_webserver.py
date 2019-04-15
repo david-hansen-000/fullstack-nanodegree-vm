@@ -6,7 +6,6 @@ from database_setup import Base, MenuItem, Restaurant
 
 app = Flask(__name__)
 
-
 engine = create_engine('sqlite:///restaurantmenu.db')
 Base.metadata.bind = engine
 
@@ -39,13 +38,24 @@ def new_menu_item(restaurant_id):
         session.commit()
         return redirect(url_for('restaurant_menu', restaurant_id=restaurant_id))
     else:
-        return render_template('restaurant_new_item.html', restaurant_id=restaurant_id)
+        return render_template('restaurant_item.html', restaurant_id=restaurant_id)
 
 
 # Task 2: Create route for editMenuItem function here
 @app.route('/restaurants/edit/<int:restaurant_id>&<int:menu_id>')
 def edit_menu_item(restaurant_id, menu_id):
-    return "page to edit menu item #{} from restaurant {}. Task 2 complete!".format(menu_id, restaurant_id)
+    item = session.query(MenuItem).filter_by(id=menu_id).one()
+    if request.method == 'POST':
+        # TODO: need this to be the same as the one I'm trying to edit
+        item.name = request.form['name']
+        item.description = request.form['description']
+        item.price = request.form['price']
+        session.add(item)
+        session.commit()
+        return redirect(url_for('restaurant_menu', restaurant_id=restaurant_id))
+    else:
+        output = render_template('restaurant_item.html', name=item.name, description=item.description, price=item.price, restaurant_id=restaurant_id)
+        return output
 
 
 # Task 3: Create a route for deleteMenuItem function here
