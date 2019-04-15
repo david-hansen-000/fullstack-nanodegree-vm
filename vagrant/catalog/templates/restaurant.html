@@ -1,0 +1,17 @@
+<html>
+<body>
+
+
+{% for restaurant in restaurants %}
+<h1>{{restaurant.name}}</h1>
+
+{% for item in items %}
+{% if item.restaurant_id == restaurant.id %}
+<div><p>{{item.name}}</p><p>{{item.description}}</p><p>{{item.price}}</p></div>
+
+{% endif %}
+{% endfor %}
+{% endfor %}
+
+</body>
+</heml>
