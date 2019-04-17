@@ -8,13 +8,15 @@ from sqlalchemy import create_engine
 
 Base = declarative_base()
 
+
 class Restaurant(Base):
     __tablename__ = 'restaurant'
 
     id = Column(Integer, primary_key=True)
     name = Column(String(250), nullable=False)
+
     def get(self):
-        return {'id':self.id, 'name':self.name}
+        return {'id': self.id, 'name': self.name}
 
 
 class MenuItem(Base):
@@ -29,27 +31,27 @@ class MenuItem(Base):
     restaurant = relationship(Restaurant)
 
     def get(self):
-       return {
-            'name'         : self.name,
-            'description'         : self.description,
-            'id'         : self.id,
-            'price'         : self.price,
-            'course'         : self.course,
-        } 
-
-    #We added this serialize function to be able to send JSON objects in a serializable format
-    @property
-    def serialize(self):
-       
         return {
-            'name'         : self.name,
-            'description'         : self.description,
-            'id'         : self.id,
-            'price'         : self.price,
-            'course'         : self.course,
+            'name': self.name,
+            'description': self.description,
+            'id': self.id,
+            'price': self.price,
+            'course': self.course,
         }
 
-    
+        # We added this serialize function to be able to send JSON objects in a serializable format
+
+    @property
+    def serialize(self):
+        return {
+            'name': self.name,
+            'description': self.description,
+            'id': self.id,
+            'price': self.price,
+            'course': self.course,
+        }
+
+
 engine = create_engine('sqlite:///restaurantmenu.db')
 
 Base.metadata.create_all(engine)

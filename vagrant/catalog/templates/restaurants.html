@@ -1,7 +1,7 @@
 <html>
 <body>
 {% for restaurant in restaurants %}
-<h1>{{restaurant.name}}
+<h1>{{restaurant.name}}</h1>
 <a href='{{url_for('restaurant_menu', restaurant_id = restaurant.id)}}'>
 Get Menu</a></h1><br>
 {% endfor %}
