@@ -1,0 +1,27 @@
+.button {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    line-height: 14px;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-image: linear-gradient(to right, rgb(12, 98, 164) 0%, rgb(35, 136, 203) 26%, rgb(15, 59, 88) 100%);
+    box-shadow: rgba(0, 0, 0, 0.7) 8px 2px 12px 0px;
+    border: 2px solid rgb(28, 110, 164);
+    display: inline-block;
+}
+
+.button:hover {
+    background: #0C62A4;
+}
+
+.button:active {
+    background: #0F3B58;
+}
+
+/* add centering for h1 tags */
