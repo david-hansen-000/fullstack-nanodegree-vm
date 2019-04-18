@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    # in template html file
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+ <h1>{{message}}</h1>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<h1>Menu Items for Restaurant {{restaurant_name}}</h1>
+</body>
+</html>

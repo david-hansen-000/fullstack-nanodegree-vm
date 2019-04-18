@@ -6,7 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-<body>
+<body>  
+    # in template html file
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+     <h1>{{message}}</h1>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <h1>Edit Entry for {{entry_type}}</h1>
     <!--Maybe some complicated if working to get forms up-->
     <!--if restaurant entry, if new entry-->
     <!--if menuitem entry, if new entry-->
