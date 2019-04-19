@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>All Restaurants</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='mystyle.css')}}">
 </head>
 <body>
   <h1>Restaurants</h1>
-  # in template html file
+  <!-- in template html file-->
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
@@ -16,5 +17,10 @@
 {% endfor %}
 {% endif %}
 {% endwith %}
+
+{% for restaurant in restaurants %}
+<h1>{{restaurant.name}}</h1>
+  <div><a class="choices" href="#">get menu</a> <a class="choices" href="">edit</a> <a class="choices" href="">delete</a></div>
+{% endfor %}
 </body>
 </html>
